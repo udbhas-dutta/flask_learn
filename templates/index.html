@@ -52,14 +52,14 @@
         </div>
     </nav>
 
-    <form class="container">
+    <form class="container" action="/" method="POST">
         <div class="mb-3">
             <label for="title" class="form-label">Enter Task</label>
-            <input type="text" class="form-control" id="title" aria-describedby="emailHelp">
+            <input type="text" class="form-control" name="title" id="title" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
-            <input type="text" class="form-control" id="description">
+            <input type="text" class="form-control" name="desc" id="description">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
@@ -69,30 +69,23 @@
             <thead>
                 <h3 class="container">Your Tasks</h3>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Sl no.</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Time Created</th>
                 </tr>
             </thead>
             <tbody>
+                {% for task in allTasks %}
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                    <th scope="row">{{loop.index}}</th>
+                    <td>{{task.title}}</td>
+                    <td>{{task.desc}}</td>
+                    <td>{{task.date_created}}</td>
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                </tr>
+                {% endfor %}
+
+
             </tbody>
         </table>
     </div>
